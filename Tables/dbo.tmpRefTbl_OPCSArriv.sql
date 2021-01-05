@@ -1,0 +1,13 @@
+CREATE TABLE [dbo].[tmpRefTbl_OPCSArriv]
+(
+[PO_ID] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ARRIVAL_NO] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[EXP_IN_HOUSE_DATE] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[EXP_SHIP_DATE] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LAST_MOD_DATE] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LAST_MOD_TIME] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ALLOCATION_APPROVED] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[TRANSPORTATION_MODE] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[ASN_APPROVED] [nvarchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+) ON [PRIMARY]
+GO

@@ -1,0 +1,42 @@
+CREATE TABLE [dbo].[MkTbl_RtnReporting]
+(
+[RtnRepCtr] [numeric] (18, 0) NOT NULL IDENTITY(1, 1),
+[INV10] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CAT_DESCRIPTION] [nvarchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[SUBCAT_DESCRIPTION] [nvarchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[STYLE DESCRIPTION] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[COLOR DESCRIPTION] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[SIZE DESCRIPTION] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Vendor #] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Vendor Name] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Line_Catalog] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ship_Net$] [float] NULL,
+[Ship_Cost$] [float] NULL,
+[Ship_Units] [float] NULL,
+[Ship_Fiscal_Wk] [float] NULL,
+[Ship_Fiscal_Month#] [float] NULL,
+[Ship_Fiscal_Month] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ship_Fiscal_Qtr] [float] NULL,
+[Ship_Fiscal_Year] [float] NULL,
+[Rtn_Net$] [float] NULL,
+[Rtn_Cost$] [float] NULL,
+[Rtn_Units] [float] NULL,
+[Rtn_RsnCd] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Rtn_RsnDesc] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Rtn_Fiscal_Wk] [float] NULL,
+[Rtn_Fiscal_Month#] [float] NULL,
+[Exch_Net$] [float] NULL,
+[Exch_Cost$] [float] NULL,
+[Exch_Units] [float] NULL,
+[Exch_RsnCd] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Exch_RsnDesc] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Exch_Fiscal_Wk] [float] NULL,
+[Exch_Fiscal_Month#] [float] NULL,
+[Exch_Fiscal_Month] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Exch_Fiscal_Qtr] [float] NULL,
+[Exch_Fiscal_Year] [float] NULL,
+[CrOn] [datetime] NULL CONSTRAINT [DF_MkTbl_RtnReporting_CrOn] DEFAULT (getdate())
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[MkTbl_RtnReporting] ADD CONSTRAINT [PK_MkTbl_RtnReporting] PRIMARY KEY CLUSTERED  ([RtnRepCtr]) ON [PRIMARY]
+GO

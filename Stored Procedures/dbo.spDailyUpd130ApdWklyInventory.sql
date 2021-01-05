@@ -1,0 +1,31 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+-- =============================================
+-- Author:		Tomas Luna
+-- Create date: 2/29/2020
+-- Description:	Part of Daily Update routine. Added this sp after activating the F21 txt import routine
+-- =============================================
+create PROCEDURE [dbo].[spDailyUpd130ApdWklyInventory] 
+	-- Add the parameters for the stored procedure here
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+INSERT INTO MkTbl_WklyInventory
+                         (FISCAL_YEAR, FISCAL_QUARTER, FISCAL_MONTH, FISCAL_WEEK, WEEK_BEGIN_DATE, WEEK_END_DATE, SKU, INV7, STATUS_ID, UNITS, COST_EA, COST)
+SELECT        F21_FADM_FISCAL_CALENDAR.FISCAL_YEAR, F21_FADM_FISCAL_CALENDAR.FISCAL_QUARTER, F21_FADM_FISCAL_CALENDAR.FISCAL_MONTH, F21_FADM_FISCAL_CALENDAR.FISCAL_WEEK, 
+                         F21_FADM_FISCAL_CALENDAR.WEEK_BEGIN_DATE, F21_FADM_FISCAL_CALENDAR.WEEK_END_DATE, F21_FMSH_WEEKLY_INVENTORY_POSITION.SKU, LEFT(F21_FMSH_WEEKLY_INVENTORY_POSITION.SKU, 7) AS INV7, 
+                         F21_FMSH_WEEKLY_INVENTORY_POSITION.STATUS_ID, F21_FMSH_WEEKLY_INVENTORY_POSITION.UNITS, F21_FMSH_WEEKLY_INVENTORY_POSITION.COST_EA, 
+                         F21_FMSH_WEEKLY_INVENTORY_POSITION.UNITS * F21_FMSH_WEEKLY_INVENTORY_POSITION.COST_EA AS COST
+FROM            F21_FMSH_WEEKLY_INVENTORY_POSITION INNER JOIN
+                         F21_FADM_FISCAL_CALENDAR ON F21_FMSH_WEEKLY_INVENTORY_POSITION.CALENDAR_SEQ = F21_FADM_FISCAL_CALENDAR.CALENDAR_SEQ
+
+    -- Insert statements for procedure here
+
+END
+GO

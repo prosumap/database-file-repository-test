@@ -1,0 +1,18 @@
+CREATE TABLE [dbo].[F21_FMSH_ITEM_MASTER_Test_2708]
+(
+[COMPANY_ID] [varchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[SKU] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[DESCRIPTION] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[ALTERNATE_SKU] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[PRODUCT_GROUP_ID] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[SUB_PRODUCT_CODE] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[SKU_STATUS] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[PRODUCT_ID] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[DESCRIPTOR1] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[DESCRIPTOR2] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[DESCRIPTOR3] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+[UOM] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[LOT_SIZE] [numeric] (6, 0) NULL,
+[COST_EA] [numeric] (10, 4) NULL
+) ON [PRIMARY]
+GO

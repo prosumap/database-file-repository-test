@@ -1,0 +1,136 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+
+
+CREATE    PROCEDURE [dbo].[SpMkTbl_OrderFlow]
+as
+BEGIN
+	BEGIN
+	IF  EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'MkTbl_OrderFlow') 
+    AND type = N'U')
+	DROP TABLE MkTbl_OrderFlow
+
+
+SELECT OrderFlow08.[category], 
+       OrderFlow08.[division], 
+       OrderFlow08.[department], 
+       OrderFlow08.[class], 
+       OrderFlow08.[style], 
+       OrderFlow08.[color], 
+       OrderFlow08.[size], 
+       OrderFlow08.[inv5], 
+       OrderFlow08.[inv7], 
+       OrderFlow08.[inv10], 
+       OrderFlow08.[vendor #], 
+       OrderFlow08.[vendor], 
+       OrderFlow08.[vendor style], 
+       OrderFlow08.[original price], 
+       OrderFlow08.[current price], 
+       OrderFlow08.[current cost], 
+       OrderFlow08.[current event #], 
+       OrderFlow08.[current event], 
+       OrderFlow08.[last event #], 
+       OrderFlow08.[last event], 
+       OrderFlow08.[first sales date], 
+       OrderFlow08.[first receipt date], 
+       OrderFlow08.[last receipt date], 
+       OrderFlow08.[next receipt date], 
+       OrderFlow08.[current oh units], 
+       OrderFlow08.[current oo units], 
+       OrderFlow08.[next 30 days oo units], 
+       OrderFlow08.[current backorder units], 
+       OrderFlow08.[current backorder cost $], 
+       OrderFlow08.[current backorder $], 
+       OrderFlow08.[return %], 
+       OrderFlow08.[order #], 
+       OrderFlow08.[internet order #], 
+       OrderFlow08.[line], 
+       OrderFlow08.[channel], 
+       OrderFlow08.[customer #], 
+       OrderFlow08.[order date], 
+       OrderFlow08.[item date], 
+       OrderFlow08.[status], 
+       OrderFlow08.[event #], 
+       OrderFlow08.[event], 
+       OrderFlow08.[demand units], 
+       OrderFlow08.[demand cost $], 
+       OrderFlow08.[demand $], 
+       OrderFlow08.[advertised demand $], 
+       OrderFlow08.[tax $], 
+       OrderFlow08.[ordered fiscal wk], 
+       OrderFlow08.[ordered fiscal month #], 
+       OrderFlow08.[ordered fiscal month], 
+       OrderFlow08.[ordered fiscal qtr], 
+       OrderFlow08.[ordered fiscal year], 
+       OrderFlow08.[immediate cancel units], 
+       OrderFlow08.[immediate cancel cost $], 
+       OrderFlow08.[immediate cancel $], 
+       OrderFlow08.[advertised immediate cancel $], 
+       OrderFlow08.[immediate cancel date], 
+       OrderFlow08.[immediate cancel fiscal wk], 
+       OrderFlow08.[immediate cancel fiscal month #], 
+       OrderFlow08.[immediate cancel fiscal month], 
+       OrderFlow08.[immediate cancel fiscal qtr], 
+       OrderFlow08.[immediate cancel fiscal year], 
+       OrderFlow08.[cancel date], 
+       OrderFlow08.[cancel units], 
+       OrderFlow08.[cancel cost $], 
+       OrderFlow08.[cancel $], 
+       OrderFlow08.[advertised cancel $], 
+       OrderFlow08.[cancel rsncd], 
+       OrderFlow08.[cancel rsn], 
+       OrderFlow08.[cancel fiscal wk], 
+       OrderFlow08.[cancel fiscal month #], 
+       OrderFlow08.[cancel fiscal month], 
+       OrderFlow08.[cancel fiscal qtr], 
+       OrderFlow08.[cancel fiscal year], 
+       OrderFlow08.[ship date], 
+       OrderFlow08.[shipped units], 
+       OrderFlow08.[shipped cost $], 
+       OrderFlow08.[shipped $], 
+       OrderFlow08.[advertised shipped $], 
+       OrderFlow08.[shipped fiscal wk], 
+       OrderFlow08.[shipped fiscal month #], 
+       OrderFlow08.[shipped fiscal month], 
+       OrderFlow08.[shipped fiscal qtr], 
+       OrderFlow08.[shipped fiscal year], 
+       OrderFlow08.[return date], 
+       OrderFlow08.[return units], 
+       OrderFlow08.[return cost $], 
+       OrderFlow08.[return $], 
+       OrderFlow08.[advertised return $], 
+       OrderFlow08.[return rsncd], 
+       OrderFlow08.[return reason], 
+       OrderFlow08.[return reason group], 
+       OrderFlow08.[return reason description], 
+       OrderFlow08.[return fiscal wk], 
+       OrderFlow08.[return fiscal month #], 
+       OrderFlow08.[return fiscal month], 
+       OrderFlow08.[return fiscal qtr], 
+       OrderFlow08.[return fiscal year], 
+       OrderFlow08.[exchange date], 
+       OrderFlow08.[exchange units], 
+       OrderFlow08.[exchange cost $], 
+       OrderFlow08.[exchange $], 
+       OrderFlow08.[advertised exchange $], 
+       OrderFlow08.[exchange rsncd], 
+       ReturnCode.[reason]            AS [Exchange Reason], 
+       ReturnCode.[grouping]         AS [Exchange Reason Group], 
+       OrderFlow08.[exchange reason] AS [Exchange Reason Description], 
+       OrderFlow08.[exchange fiscal wk], 
+       OrderFlow08.[exchange fiscal month #], 
+       OrderFlow08.[exchange fiscal month], 
+       OrderFlow08.[exchange fiscal qtr], 
+       OrderFlow08.[exchange fiscal year] 
+INTO   [dbo].[mktbl_orderflow] 
+FROM   [dbo].[VWSlct_orderflow_08] AS OrderFlow08 
+       LEFT JOIN [dbo].[reftbl_returnscode] AS ReturnCode 
+              ON OrderFlow08.[exchange rsncd] = 
+                 ReturnCode.[retcodetxt]; 
+				 end
+				 end
+
+
+GO

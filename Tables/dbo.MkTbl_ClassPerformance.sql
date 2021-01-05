@@ -1,0 +1,75 @@
+CREATE TABLE [dbo].[MkTbl_ClassPerformance]
+(
+[CPerfHCtr] [numeric] (18, 0) NOT NULL IDENTITY(1, 1),
+[Status] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Date] [datetime] NULL,
+[Department] [nvarchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Class] [nvarchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Dmnd_Units] [float] NULL,
+[Dmnd_Cost$] [float] NULL,
+[Dmnd_Net$] [float] NULL,
+[Dmnd_Gross$] [float] NULL,
+[Ord_Fiscal_Wk] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ord_Fiscal_Month#] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ord_Fiscal_Month] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ord_Fiscal_Qtr] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ord_Fiscal_Year] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ord_Season] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[Ord_YYYYWK] [nvarchar] (255) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+[CrOn] [datetime] NULL CONSTRAINT [DF_MkTbl_ClassPerformance_CrOn] DEFAULT (getdate())
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Class$disallow_zero_length] CHECK ((len([Class])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Department$disallow_zero_length] CHECK ((len([Department])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Ord_Fiscal_Month#$disallow_zero_length] CHECK ((len([Ord_Fiscal_Month#])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Ord_Fiscal_Month$disallow_zero_length] CHECK ((len([Ord_Fiscal_Month])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Ord_Fiscal_Qtr$disallow_zero_length] CHECK ((len([Ord_Fiscal_Qtr])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Ord_Fiscal_Wk$disallow_zero_length] CHECK ((len([Ord_Fiscal_Wk])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Ord_Fiscal_Year$disallow_zero_length] CHECK ((len([Ord_Fiscal_Year])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Ord_Season$disallow_zero_length] CHECK ((len([Ord_Season])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Ord_YYYYWK$disallow_zero_length] CHECK ((len([Ord_YYYYWK])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] WITH NOCHECK ADD CONSTRAINT [SSMA_CC$MkTbl_ClassPerformance$Status$disallow_zero_length] CHECK ((len([Status])>(0)))
+GO
+ALTER TABLE [dbo].[MkTbl_ClassPerformance] ADD CONSTRAINT [PK_MkTbl_ClassPerformance] PRIMARY KEY CLUSTERED  ([CPerfHCtr]) ON [PRIMARY]
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', NULL, NULL
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Class]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Class'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Date]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Date'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Department]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Department'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Dmnd_Cost$]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Dmnd_Cost$'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Dmnd_Gross$]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Dmnd_Gross$'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Dmnd_Net$]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Dmnd_Net$'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Dmnd_Units]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Dmnd_Units'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Ord_Fiscal_Month]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Ord_Fiscal_Month'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Ord_Fiscal_Month#]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Ord_Fiscal_Month#'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Ord_Fiscal_Qtr]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Ord_Fiscal_Qtr'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Ord_Fiscal_Wk]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Ord_Fiscal_Wk'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Ord_Fiscal_Year]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Ord_Fiscal_Year'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Ord_Season]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Ord_Season'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Ord_YYYYWK]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Ord_YYYYWK'
+GO
+EXEC sp_addextendedproperty N'MS_SSMA_SOURCE', N'TablesTemp.[MkTbl_ClassPerformance].[Status]', 'SCHEMA', N'dbo', 'TABLE', N'MkTbl_ClassPerformance', 'COLUMN', N'Status'
+GO

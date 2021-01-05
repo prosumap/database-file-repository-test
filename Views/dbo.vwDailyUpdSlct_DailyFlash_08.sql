@@ -1,0 +1,65 @@
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_NULLS ON
+GO
+create view  [dbo].[vwDailyUpdSlct_DailyFlash_08]
+as
+SELECT DailyFlash_07.[date], 
+       DailyFlash_07.[fiscal week], 
+       DailyFlash_07.[fiscal month #], 
+       DailyFlash_07.[fiscal month], 
+       DailyFlash_07.[fiscal qtr], 
+       DailyFlash_07.[fiscal year], 
+       DailyFlash_07.[demand units]           AS [Demand Units], 
+       DailyFlash_07.[demand cost $]          AS [Demand Cost $], 
+       DailyFlash_07.[demand $]               AS [Demand $], 
+       DailyFlash_07.[advertised demand $]    AS [Advertised Demand $], 
+       DailyFlash_07.[demand margin $]        AS [Demand Margin $], 
+       DailyFlash_07.[demand tax $]           AS [Demand Tax $], 
+       DailyFlash_07.[cancel units]           AS [Cancel Units], 
+       DailyFlash_07.[cancel cost $]          AS [Cancel Cost $], 
+       DailyFlash_07.[cancel $]               AS [Cancel $], 
+       DailyFlash_07.[advertised cancel $]    AS [Advertised Cancel $], 
+       DailyFlash_07.[cancel margin $]        AS [Cancel Margin $], 
+       DailyFlash_07.[shipped units]          AS [Shipped Units], 
+       DailyFlash_07.[shipped cost $]         AS [Shipped Cost $], 
+       DailyFlash_07.[shipped $]              AS [Shipped $], 
+       DailyFlash_07.[advertised shipped $]   AS [Advertised Shipped $], 
+       DailyFlash_07.[shipped margin $]       AS [Shipped Margin $], 
+       Sum(Firstshipdate.[shipping revenue $]) AS [Shipped Shipping Revenue $], 
+       DailyFlash_07.[returned units]         AS [Returned Units], 
+       DailyFlash_07.[returned cost $]        AS [Returned Cost $], 
+       DailyFlash_07.[returned $]             AS [Returned $], 
+       DailyFlash_07.[advertised returned $]  AS [Advertised Returned $], 
+       DailyFlash_07.[returned margin $]      AS [Returned Margin $] 
+FROM   dbo.vwDailyUpdSlct_DailyFlash_07  AS DailyFlash_07
+       LEFT JOIN dbo.slct_firstshipdate  AS Firstshipdate
+              ON DailyFlash_07.[date] = Firstshipdate.[first ship date] 
+GROUP  BY DailyFlash_07.[date], 
+          DailyFlash_07.[fiscal week], 
+          DailyFlash_07.[fiscal month #], 
+          DailyFlash_07.[fiscal month], 
+          DailyFlash_07.[fiscal qtr], 
+          DailyFlash_07.[fiscal year], 
+          DailyFlash_07.[demand units], 
+          DailyFlash_07.[demand cost $], 
+          DailyFlash_07.[demand $], 
+          DailyFlash_07.[advertised demand $], 
+          DailyFlash_07.[demand margin $], 
+          DailyFlash_07.[demand tax $], 
+          DailyFlash_07.[cancel units], 
+          DailyFlash_07.[cancel cost $], 
+          DailyFlash_07.[cancel $], 
+          DailyFlash_07.[advertised cancel $], 
+          DailyFlash_07.[cancel margin $], 
+          DailyFlash_07.[shipped units], 
+          DailyFlash_07.[shipped cost $], 
+          DailyFlash_07.[shipped $], 
+          DailyFlash_07.[advertised shipped $], 
+          DailyFlash_07.[shipped margin $], 
+          DailyFlash_07.[returned units], 
+          DailyFlash_07.[returned cost $], 
+          DailyFlash_07.[returned $], 
+          DailyFlash_07.[advertised returned $], 
+          DailyFlash_07.[returned margin $]; 
+GO
